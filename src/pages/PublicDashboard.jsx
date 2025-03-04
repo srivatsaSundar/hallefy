@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Navbar } from '../components/Navbar';
+import { Link } from "react-router-dom";
 import { FaPlus, FaSearch, FaMapMarkerAlt, FaUsers, FaClock, FaStar, FaTimes } from "react-icons/fa";
 import { HeroSection } from '../components/HeroSection';
 import { SearchFiltershome } from '../components/SearchFiltershome';
@@ -8,6 +9,8 @@ import { WeddingCategories } from '../components/WeddingCategories';
 import { HallCard } from '../components/HallCard';
 import { RealWeddingStories } from '../components/RealWeddingStories';
 import venues from '../pages/venueData';
+import {  ArrowRight } from 'lucide-react';
+
 
 const PublicDashboard = () => {
     const [venues, setVenues] = useState([]);
@@ -22,7 +25,7 @@ const PublicDashboard = () => {
         <div className="min-h-screen bg-gray-50">
             <Navbar />
             <HeroSection />
-            <div className="container mx-auto px-4">
+            <div className="container ">
                 <SearchFiltershome />
                 <WeddingCategories />
                 <div className="mt-16">
@@ -39,17 +42,32 @@ const PublicDashboard = () => {
 
                                 <div className="venue-details p-4">
                                     <h2 className="venue-name font-bold text-lg">{venue.name}</h2>
-                                    <p className="venue-location text-gray-600 flex items-center">
+                                    <a
+                                        href={`https://www.google.com/maps/search/?api=1&query=${venue.name},${venue.location}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="venue-location text-gray-600 flex items-center"
+                                        >
                                         <FaMapMarkerAlt className="mr-2" /> {venue.location}
-                                    </p>
+                                    </a>
+
                                     <p className="venue-capacity text-gray-600 flex items-center">
-                                        <FaUsers className="mr-2" /> {venue.capacity} guests
+                                        <FaUsers className="mr-2" />up to {venue.capacity} guests
                                     </p>
                                     <p className="venue-price text-gray-600 flex items-center">
                                         <FaClock className="mr-2" /> ${venue.pricePerHour}/hour
                                     </p>
-                                    <div className="venue-rating flex items-center mt-2 text-yellow-500">
+                                    {/* <div className="venue-rating flex items-center mt-2 text-yellow-500">
                                         <FaStar className="mr-1" /> {venue.rating}
+                                    </div> */}
+                                    <div className="mt-4 flex justify-between items-center">
+                                    <Link
+                                        to={`/venue/${venue.id}`}
+                                        className="flex items-center space-x-1 text-purple-600 hover:text-purple-700"
+                                    >
+                                        <span>View More</span>
+                                        <ArrowRight className="h-4 w-4" />
+                                    </Link>
                                     </div>
                                 </div>
                             </div>

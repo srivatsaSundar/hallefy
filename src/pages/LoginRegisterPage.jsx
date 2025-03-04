@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../styles.css"; // Import updated styles
+import "../styles.css"; // Ensure this file exists and is correctly imported
 
 const LoginPage = () => {
     const [isRegister, setIsRegister] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -18,18 +20,29 @@ const LoginPage = () => {
         try {
             let response;
             if (isRegister) {
-                response = await axios.post("http://localhost:5000/api/register", data);
-                alert(`User registered successfully!`);
+                response = await axios.post("http://localhost:5000/api/register", {
+                    username: data.username, // Ensure username is sent for registration
+                    email: data.email,
+                    password: data.password,
+                });
+
+                alert("User registered successfully! Please login.");
                 setIsRegister(false);
+                reset(); // Clear form fields after registration
             } else {
-                response = await axios.post("http://localhost:5000/api/login", data);
+                response = await axios.post("http://localhost:5000/api/login", {
+                    email: data.email,
+                    password: data.password,
+                });
+
                 alert(`Welcome back, ${response.data.email}!`);
 
-                const userRole = response.data.role;
+                const userRole = response.data.role || "user"; // Default role if not returned
                 const from = location.state?.from?.pathname || (userRole === "admin" ? "/admin-dashboard" : "/bookings");
                 navigate(from, { replace: true });
             }
         } catch (error) {
+            console.error("Login/Register Error:", error.response?.data || error.message);
             alert(error.response?.data?.message || "Something went wrong.");
         }
     };

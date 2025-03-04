@@ -41,27 +41,6 @@ const stories = [
         makeup: 'Blush & Glow',
       },
     },
-    {
-      id: '3',
-      couple: 'Aditi & Vikram',
-      date: 'March 1, 2024',
-      location: 'Gandhipuram - Coimbatore.',
-      images: [
-        'https://nepaltraveladventure.com/uploads/0000/1/2024/02/10/hindu-wedding.jpg',
-        'https://image9.photobiz.com/8584/13_20220310143550_10094893_xlarge.jpg',
-        'https://i.pinimg.com/564x/af/38/4a/af384a24dc7b94166cb6395a0784fd5d.jpg',
-      ],
-      description: 'A royal wedding in the heart of Jaipur with vibrant Rajasthani traditions.',
-      story: `Aditi and Vikram met during a cultural fest in college and became best friends before realizing their love for each other. They wanted a wedding that celebrated their heritage and love story.
-  
-  The wedding took place in a historic fort, with breathtaking views and traditional Rajasthani cuisine. Highlights included a colorful sangeet, a regal baraat, and a grand reception under the starlit sky. Their journey from friends to life partners was beautifully celebrated with family and friends.`,
-      venue: 'Address: 38, Avinashi Rd, near medical college, Indira Nagar, Civil Aerodrome Post, Coimbatore, Tamil Nadu 641014',
-      vendors: {
-        photographer: 'Golden Hour Studios',
-        decorator: 'Heritage Creations',
-        makeup: 'Blush & Glow',
-      },
-    },
   ];
   
   export default stories;

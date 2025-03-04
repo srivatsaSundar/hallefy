@@ -1,4 +1,5 @@
 {
+  
   "name": "wedven",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +16,7 @@
     "class-variance-authority": "^0.7.1",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.3.1",
     "express": "^4.21.2",
     "framer-motion": "^12.4.4",
     "fs": "^0.0.1-security",
@@ -22,28 +24,34 @@
     "lucide-react": "^0.475.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "mysql2": "^3.12.0",
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.5",
+    "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
     "recharts": "^2.15.1",
     "tailwind-variants": "^0.3.1",
     "web-vitals": "^2.1.4",
     "zustand": "^5.0.3"
+    
   },
   "scripts": {
+    
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+      
     ]
   },
   "browserslist": {
@@ -60,7 +68,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"
+    
   }
 }

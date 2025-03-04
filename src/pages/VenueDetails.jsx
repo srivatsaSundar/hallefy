@@ -70,13 +70,14 @@ export const VenueDetails = () => {
                 <span>{venue.rating} Rating</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Calendar className="h-5 w-5 text-purple-600" />
-                <span>Available Today</span>
-              </div>
-              <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-purple-600" />
                 <span>24/7 Support</span>
               </div>
+              <div className="flex items-center space-x-2">
+                <Calendar className="h-5 w-5 text-purple-600" />
+                <span>Available Today</span>
+              </div>
+              
             </div>
 
             <div className="mt-8">

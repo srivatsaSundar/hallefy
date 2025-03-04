@@ -1,7 +1,7 @@
 /* Venue Page Styles */
-.venue-container {
+/* .venue-container {
     padding: 24px;
-}
+} */
 
 /* Header */
 .venue-header {
@@ -47,11 +47,6 @@
 }
 
 /* Venue Cards */
-.venue-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-}
 
 .venue-card {
     background-color: white;

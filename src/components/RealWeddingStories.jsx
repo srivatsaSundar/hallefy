@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, MapPin, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { stories } from '../data/storiesData';
+import axios from 'axios';
 
 export const RealWeddingStories = () => {
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/wedding-stories')
+      .then(response => {
+        setStories(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching wedding stories:', error);
+      });
+  }, []);
+
   return (
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -42,21 +54,13 @@ export const RealWeddingStories = () => {
                     </div>
                     <div className="flex items-center space-x-1">
                       <MapPin className="h-4 w-4" />
-                      <a
-                        href={story.mapLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-purple-300"
-                        style={{ textDecoration: 'none' }}
-                      >
-                        {story.location}
-                      </a>
+                      <span>{story.location}</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="p-4">
-                <p className="text-gray-600 mb-4">{story.description}</p>
+                <p className="text-gray-600 mb-4">{story.story.substring(0, 100)}...</p>
                 <Link
                   to={`/story/${story.id}`}
                   className="inline-flex items-center space-x-2 text-purple-600 hover:text-purple-700"
@@ -72,4 +76,5 @@ export const RealWeddingStories = () => {
     </div>
   );
 };
+
 export default RealWeddingStories;
